@@ -18,8 +18,18 @@ public class Main {
             ControllerClientes.getInstance().addCliente();
             System.out.println("Digitar o nome do cliente para abrir conta: ");
             ControllerContas.getInstance().addConta(ControllerClientes.getInstance().getNome(scan.next()));
-            //System.out.println("Digitar o número da conta do cliente: ");
-            //ControllerContas.instance.getConta(scan.nextInt()).depositar();
+            System.out.println("- - - - DEPOSITANDO - - - -");
+            System.out.println("Digitar o número da conta do cliente: ");
+            ControllerContas.getInstance().getConta(scan.nextInt()).depositar();
+
+            System.out.println("- - - - SACANDO - - - -");
+            System.out.println("Digitar o número da conta do cliente: ");
+            ControllerContas.instance.getConta(scan.nextInt()).sacar();
+
+            System.out.println("- - - - TRANSFERINDO - - - -");
+            System.out.println("Digitar o número da conta do cliente: ");
+            ControllerContas.instance.getConta(scan.nextInt()).transferir();
+
             System.out.println("tecle enter para continuar ou 9 para sair!");
             opcao = fim.nextInt();
         } while (opcao != 9);

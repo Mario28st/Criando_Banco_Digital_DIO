@@ -57,37 +57,22 @@ public abstract class Conta implements Operacoes{
     }
 
     public void transferir(){
-        this.sacar();
-        Scanner destino = new Scanner(System.in);
+        Scanner scan = new Scanner (System.in);
+        System.out.println("Digite o número da conta: ");
+        Conta contaOrigem = ControllerContas.instance.getConta(scan.nextInt());
+        contaOrigem.sacar();
+
         System.out.println("Informe os dados para crédito.");
         int agenciaDestino = AGENCIA_PADRAO;
 
         System.out.println("Informe a conta: ");
-        int contaDestino = destino.nextInt();
-
-
-
-
-        if (saldo <= 0) {
-            System.out.println("Conta sem saldo para realizar essa operação!");
-            return;
-        }
-        Scanner scan = new Scanner(System.in);
-        double retirada;
-        System.out.println("Informe o valor a transferir: ");
-        retirada = scan.nextDouble();
-        if (saldo < retirada) {
-            System.out.println("Saldo insuficiente! Tente outro valor.");
-            transferir();
-        } else {
-            setSaldo(saldo - retirada);
-
+        Conta contaDestino = ControllerContas.instance.getConta(scan.nextInt());
+        contaDestino.depositar();
 
             System.out.println("Transferência realizado com sucesso!");
-            System.out.println("Seu novo saldo é " + getSaldo());
+            System.out.println("Seu novo saldo é " + contaOrigem.getSaldo());
         }
 
-    }
 
     public void imprimirSaldo(){
 

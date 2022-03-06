@@ -18,7 +18,6 @@ public class ControllerClientes {
     }
 
     public static ControllerClientes getInstance() {
-        System.out.println("*** Adicionar instância CLIENTE ****");
 
         if (instance == null) {
             instance = new ControllerClientes();
